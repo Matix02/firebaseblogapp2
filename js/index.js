@@ -12,7 +12,6 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-
 firebase.auth.Auth.Persistence.LOCAL;
 
 $("#btn-login").click(function ()
@@ -20,7 +19,7 @@ $("#btn-login").click(function ()
     var email = $("#email").val();
     var password = $("#password").val();
 
-    if(email != null && password != null)
+    if(email !== "" && password !== "")
     {
         var result = firebase.auth().signInWithEmailAndPassword(email, password);
 
@@ -39,5 +38,9 @@ $("#btn-login").click(function ()
     {
         window.alert("Form is incomplete. Please fill out all fields");
     }
+})
 
+$("#btn-logout").click(function ()
+{
+    firebase.auth().signOut();
 })
