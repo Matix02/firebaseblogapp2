@@ -38,7 +38,7 @@ $("#btn-login").click(function ()
     {
         window.alert("Form is incomplete. Please fill out all fields");
     }
-})
+});
 
 $("#btn-signup").click(function ()
 {
@@ -48,7 +48,7 @@ $("#btn-signup").click(function ()
 
     if(email !== "" && password !== "" && cPassword !== "")
     {
-        if(password == cPassword){
+        if(password === cPassword){
             var result = firebase.auth().createUserWithEmailAndPassword(email, password);
 
             result.catch(function (error)
@@ -72,7 +72,7 @@ $("#btn-signup").click(function ()
     {
         window.alert("Form is incomplete. Please fill out all fields");
     }
-})
+});
 
 $("#btn-resetPassword").click(function()
 {
@@ -104,4 +104,54 @@ $("#btn-resetPassword").click(function()
 $("#btn-logout").click(function ()
 {
     firebase.auth().signOut();
-})
+});
+
+$("#btn-update").click(function()
+{
+    var phone = $("#phone").val();
+    var address = $("#address").val();
+    var bio = $("#bio").val();
+    var fName = $("#firstName").val();
+    var sName = $("#secondName").val();
+    var country = $("#country").val();
+    var gender = $("#gender").val();
+
+    var rootRef = firebase.database().ref().child("Users");
+    var userID = firebase.auth().currentUser.uid;
+    var usersRef = rootRef.child(userID);
+
+    if(fName!=="" && sName!=="" && phone!=="" && country!=="" && gender!=="" && bio!=="" && address!==""){
+
+        var userData =
+            {
+                "phone": phone,
+                "address": address,
+                "bio": bio,
+                "firstName": fName,
+                "secondName": sName,
+                "country": country,
+                "gender": gender
+            };
+
+        usersRef.set(userData, function(error)
+        {
+            if(error){
+                var errorCode = error.code;
+                var errorMessage = error.message;
+
+                console.log(errorCode);
+                console.log(errorMessage);
+
+                window.alert("Message : " + errorMessage);
+            } else {
+                window.location.href = "MainPage.html";
+            }
+        });
+    } else {
+        window.alert("Form is incomplete. Please fill out all fields");
+    }
+
+});
+//test3
+
+

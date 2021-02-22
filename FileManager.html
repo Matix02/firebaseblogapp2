@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
+</head>
+<body>
+
+
+    <progress value="0" max="100" id="uploader">0%</progress>
+    <input type="file" class="form-control" id="main-image"/>
+
+    <button id="save-blog">Post</button>
+
+<!-- Validation and uploading of Blogs -->
+<script>
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyBs8aQxdIjqyS_5jY618bedRhC543pbrLQ",
+        authDomain: "bloggapp-c69c5.firebaseapp.com",
+        databaseURL: "https://bloggapp-c69c5-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "bloggapp-c69c5",
+        storageBucket: "bloggapp-c69c5.appspot.com",
+        messagingSenderId: "43573396725",
+        appId: "1:43573396725:web:0357ddc073147d337171bc",
+        measurementId: "G-ESKG7JT46V"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+        var fileButton = document.getElementById('main-image');
+        var uploader = document.getElementById('uploader');
+
+        fileButton.addEventListener('change', function(e) {
+            var file = e.target.files[0];
+            var storageRef = firebase.storage().ref('sweet_gifs/' + file.name);
+
+            storageRef.put(file);
+
+            task.on('state_changed',
+                function progress(snapshot) {
+                    uploader.value = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                },
+                function error(err){
+
+                },
+                function complete() {
+
+                }
+            );
+        });
+</script>
+
+</body>
+</html>

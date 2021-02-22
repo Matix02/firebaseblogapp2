@@ -61,14 +61,22 @@
     </div>
 </div>
 <script src="js/index.js"></script>
-    <script>
-        firebase.auth().onAuthStateChanged(function(user)
+<script>
+    firebase.auth().onAuthStateChanged(function(user)
+    {
+        if(user)
         {
-            if(user)
+            var userID = firebase.auth().currentUser.uid;
+            firebase.database().ref('User/' + userID).once('value').then(function (snapshot)
             {
-                window.location.href = "MainPage.html";
-            }
-        })
-    </script>
+                if(snapshot.val()){
+                    window.location.href = "MainPage.html";
+                } else {
+                    window.location.href = "accountSettings.html";
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>
