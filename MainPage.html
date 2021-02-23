@@ -8,9 +8,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
 
     <style>
@@ -88,7 +88,7 @@
 
                         </div>
                         <div class="form-group">
-                            <button id="save-blog">Post</button>
+                            <button type="button" id="save-blog" >Post - do wywalenia</button>
                         </div>
                     </form>
                     <div id="result">
@@ -116,6 +116,7 @@
             <!-- After Blog Post Area Ends Here -->
             <!-- Validation and uploading of Blogs -->
             <script>
+
                 var firebaseConfig = {
                     apiKey: "AIzaSyBs8aQxdIjqyS_5jY618bedRhC543pbrLQ",
                     authDomain: "bloggapp-c69c5.firebaseapp.com",
@@ -132,9 +133,48 @@
                 var fileButton = document.getElementById('main-image');
                 var uploader = document.getElementById('uploader');
 
+                $("#selected-image").hide();
+
+                function previewImage(image_blog)
+                {
+                    if(image_blog.files && image_blog.files[0])
+                    {
+                        var reader = new FileReader();
+
+                        reader.onload = function(e)
+                        {
+                            $("#selected-image").attr('src', e.target.result).fadeIn();
+                        }
+                        reader.readAsDataURL(image_blog.files[0]);
+                    }
+                }
+
+                $("#main-image").change(function()
+                {
+                    previewImage(this);
+                });
+
+                $("#save-blog").click(function() {
+                    var desc = $("#main-desc").val();
+                    var picture = $("#main-image").prop("files")[0];
+                    if(!desc || picture == null) {
+                        window.alert("Description or Picture is empty ");
+                    } else {
+
+                            $("#main-form")[0].reset();
+                            $("#selected-image").fadeOut();
+                            uploader.value = 0;
+                    }
+                });
                 fileButton.addEventListener('change', function(e) {
                     var file = e.target.files[0];
-                    var blogStorageRef = firebase.storage().ref('sweet_girls/' + file.name);
+                    var desc = $("#main-desc").val();
+
+                    var name = file["name"];
+                    var dateStr = new Date().getTime();
+                    var fileCompleteName = name + "_" + dateStr;
+
+                    var blogStorageRef = firebase.storage().ref('Blog Images/' + file.name);
                     var task = blogStorageRef.put(file);
 
                     task.on('state_changed',
@@ -145,28 +185,64 @@
 
                         },
                         function complete() {
+                            var user = firebase.auth().currentUser;
+                            var userName;
+
                             var gender = "xD2";
                             var randomnumber = Math.floor(Math.random() * 100);
 
                             var rootRef = firebase.database().ref().child("Blogs");
                             var userID = firebase.auth().currentUser.uid;
                             var usersRef = rootRef.child(userID);
+                            var databaseRef = firebase.database().ref().child("Users").child(userID);
 
-                                var userData =
+                            databaseRef.get().then(
+                                function (snapshot){
+                                    var fName = (snapshot.val() && snapshot.val().firstName);
+                                    var sName = (snapshot.val() && snapshot.val().secondName);
+
+                                    userName = fName + " " + sName;
+                                });
+
+                            task.snapshot.ref.getDownloadURL().then(function(downloadUrl)
+                            {
+                                var time = new Date();
+
+                                var options =
                                     {
-                                        "gender": gender,
-                                        "random": randomnumber
+                                        weekday: "long",
+                                        month: "long",
+                                        day: "2-digit",
+                                        year: "numeric",
                                     };
 
-                                usersRef.set(userData, function(error)
+                                var blogData =
+                                    {
+                                        "image": downloadUrl,
+                                        "name": fileCompleteName,
+                                        "desc": desc,
+                                        "userName": userName,
+                                        "uid": user.uid,
+                                        "time": time.toLocaleString('en-Us', {hour: 'numeric', minute: 'numeric', hour12: true}),
+                                        "date": time.toLocaleDateString('en-Us', options)
+                                    };
+
+                                var userData =
                                 {
-                                    if(error) {
-                                        var errorMessage = error.message;
-                                        window.alert("Message : " + errorMessage);
-                                    }
-                                });
-                    }
+                                    "gender": gender,
+                                    "random": randomnumber
+                                };
+
+                            usersRef.set(blogData, function(error)
+                            {
+                                if(error) {
+                                    var errorMessage = error.message;
+                                    window.alert("Message : " + errorMessage);
+                                }
+                            });
+                        }
                     );
+                });
                 });
             </script>
         </div>
