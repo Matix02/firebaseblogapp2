@@ -35,11 +35,11 @@
         var fileButton = document.getElementById('main-image');
         var uploader = document.getElementById('uploader');
 
-        fileButton.addEventListener('change', function(e) {
+
+    fileButton.addEventListener('change', function(e) {
             var file = e.target.files[0];
             var storageRef = firebase.storage().ref('sweet_gifs/' + file.name);
-
-            storageRef.put(file);
+            var task = storageRef.put(file);
 
             task.on('state_changed',
                 function progress(snapshot) {
