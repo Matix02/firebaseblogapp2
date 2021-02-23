@@ -88,11 +88,10 @@
 
                         </div>
                         <div class="form-group">
-                            <button type="button" id="save-blog" >Post - do wywalenia</button>
+                            <button type="submit" id="save-blog" >Post - do wywalenia</button>
                         </div>
                     </form>
                     <div id="result">
-
                     </div>
                 </div>
             </div>
@@ -130,6 +129,8 @@
 
                 firebase.initializeApp(firebaseConfig);
 
+                firebase.auth.Auth.Persistence.LOCAL;
+
                 var fileButton = document.getElementById('main-image');
                 var uploader = document.getElementById('uploader');
 
@@ -160,10 +161,10 @@
                     if(!desc || picture == null) {
                         window.alert("Description or Picture is empty ");
                     } else {
-
-                            $("#main-form")[0].reset();
-                            $("#selected-image").fadeOut();
-                            uploader.value = 0;
+                        //Reset
+                        //     $("#main-form")[0].reset();
+                        //     $("#selected-image").fadeOut();
+                        //     uploader.value = 0;
                     }
                 });
                 fileButton.addEventListener('change', function(e) {
@@ -194,7 +195,9 @@
                             var rootRef = firebase.database().ref().child("Blogs");
                             var userID = firebase.auth().currentUser.uid;
                             var usersRef = rootRef.child(userID);
+
                             var databaseRef = firebase.database().ref().child("Users").child(userID);
+                            var databasePostRef = firebase.database().ref("Blogs");
 
                             databaseRef.get().then(
                                 function (snapshot){
@@ -221,28 +224,67 @@
                                         "image": downloadUrl,
                                         "name": fileCompleteName,
                                         "desc": desc,
+                                        "counter": 5000 - counter,
                                         "userName": userName,
                                         "uid": user.uid,
                                         "time": time.toLocaleString('en-Us', {hour: 'numeric', minute: 'numeric', hour12: true}),
                                         "date": time.toLocaleDateString('en-Us', options)
                                     };
 
-                                var userData =
-                                {
-                                    "gender": gender,
-                                    "random": randomnumber
-                                };
+                                var newPostRef = databasePostRef.push();
 
-                            usersRef.set(blogData, function(error)
+                            newPostRef.set(blogData, function(error)
                             {
                                 if(error) {
-                                    var errorMessage = error.message;
-                                    window.alert("Message : " + errorMessage);
+                                    $("#result").attr("class", "alert alert-danger").html(error.message);
+
+                                } else {
+                                    $("#result").attr("class", "alert alert-success").html("Image is ready to be send");
+                                    window.open("", "_self");
                                 }
                             });
                         }
                     );
                 });
+                });
+                //////////////////!!!!!!!!!!!!!!!!! RETRIVE DATA !!!!!!!!!!!!!//////////////////
+                var dbBlogs = firebase.database().ref().child("Blogs").orderByChild("counter");
+
+                dbBlogs.on("value", function(blogs)
+                {
+                    if(blogs.exists())
+                    {
+                        var blogsHtml = "";
+
+                        blogs.forEach(function(singleBlog)
+                        {
+                            counter = counter + 1;
+
+                            blogsHtml += "<div class='jumbotron bg-light text-dark border border-dark'>";
+                                blogsHtml += "<div> <img width='1000px' height='550px' src='" + singleBlog.val().image + "'/></div> <br>";
+
+                                blogsHtml += "<div class='row'>";
+                                    blogsHtml +="<div class='col-sm-5'> <p style='color:grey;'>" +
+                                                "Published by: " + singleBlog.val().userName +
+                                                "</p> </div>" +
+
+                                                "<div class='col-sm-3'> <p style='color:grey;'>" +
+                                                "Time: " + singleBlog.val().time +
+                                                "</p> </div>" +
+
+                                                "<div class='col-sm-4'> <p style='color:grey; margin-left:85px; '>" +
+                                                "Date: " + singleBlog.val().date +
+                                                "</p> </div>"
+                                                ;
+                                blogsHtml += "</div> <br>";
+
+                                blogsHtml += "<div style='text-align: justify; color: black;'>";
+                                    blogsHtml += singleBlog.val().desc;
+                                blogsHtml += "</div> <br>";
+                            blogsHtml += "</div>";
+                        });
+                        $("#blogs").html(blogsHtml);
+                    }
                 });
             </script>
         </div>
