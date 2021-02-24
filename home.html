@@ -1,0 +1,222 @@
+<!-- Blog Post Area -->
+<div class="jumbotron bg-dark" style="margin-top: 15px;">
+    <script>
+        var counter = 0;
+    </script>
+    <div class="container text-center">
+        <form id="main-form">
+            <div class="form-group">
+                <textarea type="text" rows="5" placeholder="Description..." class="form-control" id="main-desc"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="file" class="form-control" id="main-image"/>
+            </div>
+            <div class="form-group">
+                <img id="selected-image" width="250" height="150" src="#"/>
+            </div>
+            <div class="form-group">
+                <div class="progress bg-secondary">
+                    <progress class="progress-bar bg-success" value="0" max="100" id="uploader">0%</progress>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <button type="submit" id="save-blog" >Post - do wywalenia</button>
+            </div>
+        </form>
+        <div id="result">
+        </div>
+    </div>
+</div>
+<!-- Blog Post Area Ends Here -->
+
+<!-- After Blog Post Area -->
+<hr>
+<br><br><br>
+<div class="text-center bg-light text-dark">
+    <h3>home</h3>
+</div>
+<hr>
+<br>
+
+<div class="row container-fluid bg-3">
+    <div class="col-sm-12" id="blogs">
+
+    </div>
+</div>
+<br>
+<!-- After Blog Post Area Ends Here -->
+<!-- Validation and uploading of Blogs -->
+<script>
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyBs8aQxdIjqyS_5jY618bedRhC543pbrLQ",
+        authDomain: "bloggapp-c69c5.firebaseapp.com",
+        databaseURL: "https://bloggapp-c69c5-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "bloggapp-c69c5",
+        storageBucket: "bloggapp-c69c5.appspot.com",
+        messagingSenderId: "43573396725",
+        appId: "1:43573396725:web:0357ddc073147d337171bc",
+        measurementId: "G-ESKG7JT46V"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    firebase.auth.Auth.Persistence.LOCAL;
+
+    var fileButton = document.getElementById('main-image');
+    var uploader = document.getElementById('uploader');
+
+    $("#selected-image").hide();
+
+    function previewImage(image_blog)
+    {
+        if(image_blog.files && image_blog.files[0])
+        {
+            var reader = new FileReader();
+
+            reader.onload = function(e)
+            {
+                $("#selected-image").attr('src', e.target.result).fadeIn();
+            }
+            reader.readAsDataURL(image_blog.files[0]);
+        }
+    }
+
+    $("#main-image").change(function()
+    {
+        previewImage(this);
+    });
+
+    $("#save-blog").click(function() {
+        var desc = $("#main-desc").val();
+        var picture = $("#main-image").prop("files")[0];
+        if(!desc || picture == null) {
+            window.alert("Description or Picture is empty ");
+        } else {
+            //Reset
+            //     $("#main-form")[0].reset();
+            //     $("#selected-image").fadeOut();
+            //     uploader.value = 0;
+        }
+    });
+    fileButton.addEventListener('change', function(e) {
+        var file = e.target.files[0];
+        var desc = $("#main-desc").val();
+
+        var name = file["name"];
+        var dateStr = new Date().getTime();
+        var fileCompleteName = name + "_" + dateStr;
+
+        var blogStorageRef = firebase.storage().ref('Blog Images/' + file.name);
+        var task = blogStorageRef.put(file);
+
+        task.on('state_changed',
+            function progress(snapshot) {
+                uploader.value = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            },
+            function error(err) {
+
+            },
+            function complete() {
+                var user = firebase.auth().currentUser;
+                var userName;
+
+                var gender = "xD2";
+                var randomnumber = Math.floor(Math.random() * 100);
+
+                var rootRef = firebase.database().ref().child("Blogs");
+                var userID = firebase.auth().currentUser.uid;
+                var usersRef = rootRef.child(userID);
+
+                var databaseRef = firebase.database().ref().child("Users").child(userID);
+                var databasePostRef = firebase.database().ref("Blogs");
+
+                databaseRef.get().then(
+                    function (snapshot){
+                        var fName = (snapshot.val() && snapshot.val().firstName);
+                        var sName = (snapshot.val() && snapshot.val().secondName);
+
+                        userName = fName + " " + sName;
+                    });
+
+                task.snapshot.ref.getDownloadURL().then(function(downloadUrl)
+                    {
+                        var time = new Date();
+
+                        var options =
+                            {
+                                weekday: "long",
+                                month: "long",
+                                day: "2-digit",
+                                year: "numeric",
+                            };
+
+                        var blogData =
+                            {
+                                "image": downloadUrl,
+                                "name": fileCompleteName,
+                                "desc": desc,
+                                "counter": 5000 - counter,
+                                "userName": userName,
+                                "uid": user.uid,
+                                "time": time.toLocaleString('en-Us', {hour: 'numeric', minute: 'numeric', hour12: true}),
+                                "date": time.toLocaleDateString('en-Us', options)
+                            };
+
+                        var newPostRef = databasePostRef.push();
+
+                        newPostRef.set(blogData, function(error)
+                        {
+                            if(error) {
+                                $("#result").attr("class", "alert alert-danger").html(error.message);
+
+                            } else {
+                                $("#result").attr("class", "alert alert-success").html("Image is ready to be send");
+                                window.open("", "_self");
+                            }
+                        });
+                    }
+                );
+            });
+    });
+    //////////////////!!!!!!!!!!!!!!!!! RETRIVE DATA !!!!!!!!!!!!!//////////////////
+    var dbBlogs = firebase.database().ref().child("Blogs").orderByChild("counter");
+
+    dbBlogs.on("value", function(blogs)
+    {
+        if(blogs.exists())
+        {
+            var blogsHtml = "";
+
+            blogs.forEach(function(singleBlog)
+            {
+                counter = counter + 1;
+
+                blogsHtml += "<div class='jumbotron bg-light text-dark border border-dark'>";
+                blogsHtml += "<div> <img width='1000px' height='550px' src='" + singleBlog.val().image + "'/></div> <br>";
+
+                blogsHtml += "<div class='row'>";
+                blogsHtml +="<div class='col-sm-5'> <p style='color:grey;'>" +
+                    "Published by: " + singleBlog.val().userName +
+                    "</p> </div>" +
+
+                    "<div class='col-sm-3'> <p style='color:grey;'>" +
+                    "Time: " + singleBlog.val().time +
+                    "</p> </div>" +
+
+                    "<div class='col-sm-4'> <p style='color:grey; margin-left:85px; '>" +
+                    "Date: " + singleBlog.val().date +
+                    "</p> </div>"
+                ;
+                blogsHtml += "</div> <br>";
+
+                blogsHtml += "<div style='text-align: justify; color: black;'>";
+                blogsHtml += singleBlog.val().desc;
+                blogsHtml += "</div> <br>";
+                blogsHtml += "</div>";
+            });
+            $("#blogs").html(blogsHtml);
+        }
+    });
+</script>
