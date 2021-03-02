@@ -1,9 +1,6 @@
 
 
 
-
-
-
 @media only screen and (max-width: 1199px) {
     img {
         width: 100%;
@@ -63,4 +60,69 @@ albo jesli zostanie zwrocona uwaga */
 @media only screen and (max-width: 325px) {
      div.text-dark{
     }
+}
+/* Stopka */
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #333;
+    padding: 40px;
+}
+
+.footer-nav {
+    list-style: none;
+    float: left;
+}
+
+.social-links {
+    list-style: none;
+    float: right;
+}
+
+.footer-nav li,
+.social-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+.footer-nav li:last-child,
+.footer-nav li:last-child {
+    margin-right: 0;
+}
+.footer-nav a:link,
+.footer-nav a:visited,
+.social-links a:link,
+.social-links a:visited {
+    text-decoration: none;
+    border: 0;
+    color: #888;
+    transition: color 0.2s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+    color: #ddd;
+}
+
+footer p {
+    color: #888;
+    text-align: center;
+    font-size: 90%;
+    margin-top: 20px;
+}
+
+.social-links {
+    opacity: 0.7;
+    height: auto;
+    transform: scale(1.15);
+    transition: transform 0.5s, opacity 0.5s;
+}
+.social-links li a img {
+    width: 30px;
+    height: 30px;
+}
+.social-links li a:hover {
+    filter: brightness(0) invert(1)
 }

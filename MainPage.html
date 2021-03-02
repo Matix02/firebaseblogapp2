@@ -14,6 +14,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
 
     <link rel="stylesheet" href="design_files/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="js/grid.css">
 
     <style>
         progress[value] {
@@ -47,7 +48,6 @@
                      My Blogs
                 </a>
             </li>
-
         </ul>
             <div class="navbar-nav  my-2 my-lg-0" >
                 <a class="nav-link" style="padding-top: 0" href="#">Logout</a>
@@ -307,11 +307,35 @@
         </div>
     </div>
 </div>
+<footer>
+    <div class="row">
+        <div class="col span-1-of-2">
+            <ul class="footer-nav">
+                <li><a href="#">Work</a> </li>
+                <li><a href="#">About</a> </li>
+                <li><a href="#">Contact</a> </li>
+                <li><a href="#">Resumé</a> </li>
+            </ul>
+        </div>
+        <div class="col span-1-of-2">
+            <ul class="social-links">
+                <li><a href="#" class="fb2"> <img src="icons/logo-facebook.svg" alt="facebook" class="fb"></a></li>
+                <li><a href="#"><img src="icons/logo-twitter.svg" alt="twitter"> </a></li>
+                <li><a href="#"><img src="icons/logo-linkedin.svg" alt="linkdin"> </a></li>
+                <li><a href="#"><img src="icons/logo-github.svg" alt="github"> </a></li>
+            </ul>
+        </div>
+    </div>
+        <p style="text-align: center">
+            Copyright &copy; 2021 by Mateusz Gęślowski. All rights reserved.
+        </p>
+</footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
 <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js" integrity="sha512-0mXreXYrXoy9laHoypsAOjuSCqh57vY+kIdE46k8Hw0yRY1EhJyHWUEAqfHOTrPkBpsbO39/ZPw5HITv8mLVOA==" crossorigin="anonymous"></script>
 <script src="js/responsive.js"></script>
+
 <script>
     firebase.auth().onAuthStateChanged(function(user)
     {
