@@ -1,67 +1,5 @@
 
-
-
-@media only screen and (max-width: 1199px) {
-    img {
-        width: 100%;
-        height: 100%;
-    }
-    .form-inline a {
-        color: white;
-    }
-}
-
-@media only screen and (max-width: 991px) {
-    img {
-        width: 100%;
-        height: 100%;
-    }
-    #container {
-        margin: 0;
-        max-width: 100%;
-    }
-
-    .form-inline a {
-        padding: 0;
-        color: white;
-    }
-
-}
-/* Dopracować ten margines po prawej stronie */
-@media only screen and (max-width: 767px) {
-    img {
-        width: 100%;
-        height: 100%;
-    }
-    #container {
-        max-width: 755px;
-        margin: 0;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    img {
-        width: 100%;
-        height: 100%;
-    }
-
-    #date-post {
-        padding-left: 15px;
-    }
-
-    #time-post {
-        padding-left: 15px;
-    }
-
-}
-/* Za duzy naglowek na 325px i w dół -
-Zając sie tym później,
-albo jesli zostanie zwrocona uwaga */
-@media only screen and (max-width: 325px) {
-     div.text-dark{
-    }
-}
-/* Stopka */
+ /*Stopka */
 .row {
     max-width: 1140px;
     margin: 0 auto;
@@ -69,7 +7,7 @@ albo jesli zostanie zwrocona uwaga */
 
 footer {
     background-color: #333;
-    padding: 40px;
+    padding: 30px;
 }
 
 .footer-nav {
@@ -126,3 +64,148 @@ footer p {
 .social-links li a:hover {
     filter: brightness(0) invert(1)
 }
+/* Spinner */
+.spinner-border {
+
+}
+#sticky-footer {
+
+}
+
+/* Contact Form */
+#main-form {
+    color: white;
+    text-align: left;
+}
+
+.form-group {
+    text-align: center;
+}
+
+.contact-form {
+    padding-left: 50px;
+}
+
+label {
+    font-size: large;
+}
+
+#send-form {
+    width:150px;
+    height: 60px;
+}
+
+#email,
+select,
+textarea {
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #1CADE4;
+}
+#contact-message {
+    height: 100px;
+    margin-bottom: 10px;
+}
+input[type=submit]
+{
+    font-size: 16px;
+    margin-top: 0;
+}
+
+input[type =checkbox] {
+    margin: 10px 5px 10px 0;
+}
+
+*:focus {outline: none; }
+
+/* Responsive */
+
+
+
+ @media only screen and (max-width: 1199px) {
+     img {
+         width: 100%;
+         height: 100%;
+     }
+     .form-inline a {
+         color: white;
+     }
+     .contact-form {
+         padding-left: 0;
+         margin-left: 0;
+     }
+
+ }
+
+ @media only screen and (max-width: 991px) {
+     img {
+         width: 100%;
+         height: 100%;
+     }
+     #container {
+         margin: 0;
+         max-width: 100%;
+     }
+
+     .form-inline a {
+         padding: 0;
+         color: white;
+     }
+     #logout-menu {
+         margin-top: 7px;
+     }
+     .contact-form {
+         padding: 0;
+         margin: 0;
+     }
+ }
+ /* Dopracować ten margines po prawej stronie */
+ @media only screen and (max-width: 767px) {
+     img {
+         width: 100%;
+         height: 100%;
+     }
+     #container {
+         max-width: 755px;
+         margin: 0;
+     }
+
+     #send-form {
+         width: 100%;
+     }
+
+ }
+
+ @media only screen and (max-width: 480px) {
+     img {
+         width: 100%;
+         height: 100%;
+     }
+
+     #date-post {
+         padding-left: 15px;
+     }
+
+     #time-post {
+         padding-left: 15px;
+     }
+     .col {
+         padding-top: 10px;
+     }
+     .title-form {
+         padding-left: 15px;
+     }
+     #send-form {
+         margin-top: 0;
+         padding-top: 0;
+     }
+
+ }
+ /* Za duzy naglowek na 325px i w dół -
+ Zając sie tym później,
+ albo jesli zostanie zwrocona uwaga */
+ @media only screen and (max-width: 325px) {
+     div.text-dark{
+     }
+ }
