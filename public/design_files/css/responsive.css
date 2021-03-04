@@ -1,5 +1,11 @@
 
-
+.col-lg-12 {
+    margin-top: 155px;
+    margin-bottom: 95px;
+}
+.jumbotron {
+    margin-top: 32px;
+}
 
  /*Stopka */
 .row {
@@ -123,9 +129,32 @@ input[type =checkbox] {
 
 /* Responsive */
 
+ @media only screen and (max-height: 730px) {
+     footer {
 
-
+     }
+ }
+/* Nie zrobiono stopki dla małych ekranów - jeśli chodzi o wysokość */
  @media only screen and (max-width: 1199px) {
+
+     nav,
+     .navbar-brand{
+         height: 150px;
+         font-size: 40px;
+         text-align: center;
+     }
+     .navbar-brand {
+         margin-top: 45px;
+         font-size: 55px;
+     }
+     .nav-link {
+         margin-left: 23px;
+         margin-right: 23px;
+     }
+
+     body {
+         height: 100%;
+     }
      img {
          width: 100%;
          height: 100%;
@@ -133,9 +162,39 @@ input[type =checkbox] {
      .form-inline a {
          color: white;
      }
+     /* Contact Form */
+     .col-lg-12 {
+         margin-top: 250px;
+     }
+     .jumbotron {
+         margin: 0;
+         padding: 15px;
+     }
+     h2 {
+         font-size: 350%;
+         padding-bottom: 15px;
+     }
+     label,
+     .col-md-auto {
+         font-size: 200%;
+     }
+     .container {
+         padding: 0;
+     }
      .contact-form {
-         padding-left: 0;
-         margin-left: 0;
+         padding: 0;
+         margin: 0;
+     }
+     .row {
+         padding-bottom: 15px;
+     }
+
+     footer {
+         bottom: 0;
+         height: 150px;
+         left: 0;
+         position: absolute;
+         width: 100%;
      }
 
  }
@@ -176,6 +235,11 @@ input[type =checkbox] {
      #send-form {
          width: 100%;
      }
+     .jumbotron {
+         margin: 0;
+         padding: 0;
+     }
+
 
  }
 

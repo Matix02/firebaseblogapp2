@@ -101,7 +101,7 @@ $("#btn-resetPassword").click(function()
 });
 
 
-$("#btn-logout").click(function ()
+$("#logout-menu").click(function ()
 {
     firebase.auth().signOut();
 });

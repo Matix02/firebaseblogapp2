@@ -337,7 +337,12 @@
             Copyright &copy; 2021 by Mateusz Gęślowski. All rights reserved.
         </p>
 </footer>
-
+<script>
+$("#logout-menu").click(function ()
+{
+    firebase.auth().signOut();
+});
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
 <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
