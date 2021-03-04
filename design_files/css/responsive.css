@@ -1,4 +1,6 @@
 
+
+
  /*Stopka */
 .row {
     max-width: 1140px;
@@ -95,7 +97,7 @@ label {
     height: 60px;
 }
 
-#email,
+#email2,
 select,
 textarea {
     width: 100%;

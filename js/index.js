@@ -150,18 +150,63 @@ $("#btn-update").click(function()
     } else {
         window.alert("Form is incomplete. Please fill out all fields");
     }
-
 });
 
-function switchView(view)
-{
-    $.get({
-        url:view,
-        cache:false,
-    })
-        .then(function(data){
-            $("#container").html(data);
+$("#se222nd-form").click(function() {
+    var email= $("#email2").val();
+    var type = $("#find-us").val();
+    var message = $("#contact-message").val();
+    if(!email || !message) {
+        window.alert("Uzupełnij puste pola!");
+    } else {
+        //Reset
+        //     $("#main-form")[0].reset();
+        //     $("#selected-image").fadeOut();
+        //     uploader.value = 0;
+        var databaseEmailRef = firebase.database().ref().child("Emails");
+        var emailsRef = databaseEmailRef.push();
+
+        var mailData =
+            {
+                "email": email,
+                "type": type,
+                "message": message
+            };
+
+        emailsRef.set(mailData, function(error)
+        {
+            if(error) {
+                $("#result").attr("class", "alert alert-danger").html(error.message);
+
+            } else {
+                $("#result").attr("class", "alert alert-success").html("Email został wysłany");
+                window.open("", "_self");
+            }
         });
-}
+    }
+});
+
+$('#send-form').click(function() {
+
+    var opinionCheckBox = document.getElementById("like").checked;
+
+    if(opinionCheckBox) {
+        var emailMessage = document.getElementById('contact-message').value
+            + "\nNiesamowita strona\n"
+            + "Pozdrawiam " + document.getElementById('email2').value;
+    } else {
+        var emailMessage = document.getElementById('contact-message').value
+            +"\nPozdrawiam " + document.getElementById('email2').value;
+    }
+
+    window.location.href = "mailto:mateuszgeslowski3108@gmail.com"
+        + "?cc=myCCaddress@example.com"
+        + "&subject=" + encodeURIComponent($("#find-us :selected").text())
+        + "&body=" + encodeURIComponent(emailMessage);
+
+
+    // $("#result").attr("class", "alert alert-success").html("Dziękujemy za odzew!");
+    // window.open("", "_self");
+});
 
 
