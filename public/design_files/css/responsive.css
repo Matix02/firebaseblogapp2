@@ -1,0 +1,213 @@
+
+
+
+ /*Stopka */
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #333;
+    padding: 30px;
+}
+
+.footer-nav {
+    list-style: none;
+    float: left;
+}
+
+.social-links {
+    list-style: none;
+    float: right;
+}
+
+.footer-nav li,
+.social-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+.footer-nav li:last-child,
+.footer-nav li:last-child {
+    margin-right: 0;
+}
+.footer-nav a:link,
+.footer-nav a:visited,
+.social-links a:link,
+.social-links a:visited {
+    text-decoration: none;
+    border: 0;
+    color: #888;
+    transition: color 0.2s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+    color: #ddd;
+}
+
+footer p {
+    color: #888;
+    text-align: center;
+    font-size: 90%;
+    margin-top: 20px;
+}
+
+.social-links {
+    opacity: 0.7;
+    height: auto;
+    transform: scale(1.15);
+    transition: transform 0.5s, opacity 0.5s;
+}
+.social-links li a img {
+    width: 30px;
+    height: 30px;
+}
+.social-links li a:hover {
+    filter: brightness(0) invert(1)
+}
+/* Spinner */
+.spinner-border {
+
+}
+#sticky-footer {
+
+}
+
+/* Contact Form */
+#main-form {
+    color: white;
+    text-align: left;
+}
+
+.form-group {
+    text-align: center;
+}
+
+.contact-form {
+    padding-left: 50px;
+}
+
+label {
+    font-size: large;
+}
+
+#send-form {
+    width:150px;
+    height: 60px;
+}
+
+#email2,
+select,
+textarea {
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #1CADE4;
+}
+#contact-message {
+    height: 100px;
+    margin-bottom: 10px;
+}
+input[type=submit]
+{
+    font-size: 16px;
+    margin-top: 0;
+}
+
+input[type =checkbox] {
+    margin: 10px 5px 10px 0;
+}
+
+*:focus {outline: none; }
+
+/* Responsive */
+
+
+
+ @media only screen and (max-width: 1199px) {
+     img {
+         width: 100%;
+         height: 100%;
+     }
+     .form-inline a {
+         color: white;
+     }
+     .contact-form {
+         padding-left: 0;
+         margin-left: 0;
+     }
+
+ }
+
+ @media only screen and (max-width: 991px) {
+     img {
+         width: 100%;
+         height: 100%;
+     }
+     #container {
+         margin: 0;
+         max-width: 100%;
+     }
+
+     .form-inline a {
+         padding: 0;
+         color: white;
+     }
+     #logout-menu {
+         margin-top: 7px;
+     }
+     .contact-form {
+         padding: 0;
+         margin: 0;
+     }
+ }
+ /* Dopracować ten margines po prawej stronie */
+ @media only screen and (max-width: 767px) {
+     img {
+         width: 100%;
+         height: 100%;
+     }
+     #container {
+         max-width: 755px;
+         margin: 0;
+     }
+
+     #send-form {
+         width: 100%;
+     }
+
+ }
+
+ @media only screen and (max-width: 480px) {
+     img {
+         width: 100%;
+         height: 100%;
+     }
+
+     #date-post {
+         padding-left: 15px;
+     }
+
+     #time-post {
+         padding-left: 15px;
+     }
+     .col {
+         padding-top: 10px;
+     }
+     .title-form {
+         padding-left: 15px;
+     }
+     #send-form {
+         margin-top: 0;
+         padding-top: 0;
+     }
+
+ }
+ /* Za duzy naglowek na 325px i w dół -
+ Zając sie tym później,
+ albo jesli zostanie zwrocona uwaga */
+ @media only screen and (max-width: 325px) {
+     div.text-dark{
+     }
+ }
