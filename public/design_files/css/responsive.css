@@ -1,21 +1,41 @@
 
+html, body {
+    margin: 0;
+}
+
 .col-lg-12 {
-    margin-top: 155px;
-    margin-bottom: 95px;
+    margin-top: 125px;
+    margin-bottom: 55px;
 }
 .jumbotron {
     margin-top: 32px;
 }
 
- /*Stopka */
-.row {
-    max-width: 1140px;
-    margin: 0 auto;
+#title-add {
+    padding-left: 12px;
+    padding-bottom: 5px;
 }
 
+#save-blog {
+    width:150px;
+    height: 60px;
+}
+
+ /*Stopka */
+/*.row {*/
+/*    max-width: 1140px;*/
+/*    margin: 0 auto;*/
+/*}*/
+
 footer {
+    position: relative;
     background-color: #333;
     padding: 30px;
+    min-height:50px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
 }
 
 .footer-nav {
@@ -43,17 +63,17 @@ footer {
 .social-links a:visited {
     text-decoration: none;
     border: 0;
-    color: #888;
+    color: white;
     transition: color 0.2s;
 }
 
 .footer-nav li a:hover,
 .footer-nav li a:active {
-    color: #ddd;
+    color: #888;
 }
 
 footer p {
-    color: #888;
+    color: white;
     text-align: center;
     font-size: 90%;
     margin-top: 20px;
@@ -64,21 +84,17 @@ footer p {
     height: auto;
     transform: scale(1.15);
     transition: transform 0.5s, opacity 0.5s;
+    filter: brightness(0) invert(1);
 }
+
 .social-links li a img {
     width: 30px;
     height: 30px;
 }
-.social-links li a:hover {
-    filter: brightness(0) invert(1)
-}
+
+.social-links li a:hover { }
 /* Spinner */
-.spinner-border {
-
-}
-#sticky-footer {
-
-}
+.spinner-border { }
 
 /* Contact Form */
 #main-form {
@@ -128,33 +144,80 @@ input[type =checkbox] {
 *:focus {outline: none; }
 
 /* Responsive */
+@media (min-height: 844px), (max-height: 1021px)
+and (min-width: 1199px), (max-width: 1700px){
 
- @media only screen and (max-height: 730px) {
-     footer {
+    footer {
+        position: absolute;
+        background-color: blue;
 
-     }
- }
+    }
+}
+@media (min-height: 1364px), (max-height: 1365px)
+and (min-width: 1022px), (max-width: 1024px){
+
+    #contact-message {
+        height: 150px;
+    }
+    footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: red;
+        color: white;
+    }
+
+}
+@media (min-height: 768px), (max-height: 843px)
+and (min-width: 768px), (max-width: 1198px){
+
+    footer {
+        position: absolute;
+        background-color: green;
+
+    }
+}
+
+
+
+@media (max-height: 1023px)
+ {
+    #contact-message {
+        height: 150px;
+    }
+}
+
+@media only screen and (max-height: 940px) {
+
+
+}
 /* Nie zrobiono stopki dla małych ekranów - jeśli chodzi o wysokość */
  @media only screen and (max-width: 1199px) {
 
+     #result {
+         margin-left: 15px;
+         margin-right: 15px;
+     }
+
+     input[type=checkbox] {
+         transform: scale(2.0);
+     }
      nav,
      .navbar-brand{
-         height: 150px;
-         font-size: 40px;
+         height: 100px;
+         font-size: 25px;
          text-align: center;
      }
      .navbar-brand {
-         margin-top: 45px;
-         font-size: 55px;
+         font-size: 45px;
+         padding: 10px;
      }
      .nav-link {
          margin-left: 23px;
          margin-right: 23px;
      }
 
-     body {
-         height: 100%;
-     }
      img {
          width: 100%;
          height: 100%;
@@ -164,19 +227,19 @@ input[type =checkbox] {
      }
      /* Contact Form */
      .col-lg-12 {
-         margin-top: 250px;
+         margin-top: 150px;
      }
      .jumbotron {
          margin: 0;
          padding: 15px;
      }
      h2 {
-         font-size: 350%;
+         font-size: 300%;
          padding-bottom: 15px;
      }
      label,
      .col-md-auto {
-         font-size: 200%;
+         font-size: 180%;
      }
      .container {
          padding: 0;
@@ -189,20 +252,38 @@ input[type =checkbox] {
          padding-bottom: 15px;
      }
 
-     footer {
-         bottom: 0;
-         height: 150px;
-         left: 0;
-         position: absolute;
-         width: 100%;
+     .form-group,
+     .form-group textarea
+     {
+         font-size: 20px;
+         padding: 10px 15px;
      }
 
+     #result
+     {
+         font-size: 30px;
+         padding: 10px 15px;
+     }
+     #send-form,
+     #save-blog
+     {
+         width: 100%;
+         font-size: large;
+     }
+     .title-form h2 {
+         margin-left: 16px;
+     }
  }
 
  @media only screen and (max-width: 991px) {
      img {
          width: 100%;
          height: 100%;
+     }
+     .form-group,
+     .form-group textarea
+     {
+         font-size: 15px;
      }
      #container {
          margin: 0;
@@ -213,25 +294,46 @@ input[type =checkbox] {
          padding: 0;
          color: white;
      }
+
      #logout-menu {
          margin-top: 7px;
      }
+
      .contact-form {
          padding: 0;
          margin: 0;
      }
+
+     #navbarNavAltMarkup {
+         background-color: #343a40;
+     }
+
+     nav,
+     .navbar-brand{
+         text-align: left;
+     }
+
+
+
  }
  /* Dopracować ten margines po prawej stronie */
  @media only screen and (max-width: 767px) {
+     html,body
+     {
+         width: 100%;
+         height: 100%;
+         margin: 0;
+         padding: 0;
+         overflow-x: hidden;
+     }
      img {
          width: 100%;
          height: 100%;
      }
-     #container {
-         max-width: 755px;
-         margin: 0;
-     }
 
+     .title-form {
+         padding-left: 15px;
+     }
      #send-form {
          width: 100%;
      }
@@ -239,39 +341,134 @@ input[type =checkbox] {
          margin: 0;
          padding: 0;
      }
+     footer {
+         position: relative;
+     }
 
+     footer p {
+         color: #888;
+         text-align: center;
+         font-size: 90%;
+         margin: 0;
+     }
+     footer {
+         padding: 5px;
+     }
+     h2 {
+         font-size: 300% ;
+     }
+     label {
+         font-size: 150%;
+     }
 
- }
+     label,
+     .col-md-auto {
+         font-size: 100%;
+     }
 
- @media only screen and (max-width: 480px) {
-     img {
+     .send-button,
+     #save-blog
+     {
          width: 100%;
-         height: 100%;
+         font-size: large;
      }
 
-     #date-post {
-         padding-left: 15px;
+     input[type=checkbox] {
+         transform: scale(1.2);
+     }
+     nav,
+     .navbar-brand{
+         height: 80px;
+         font-size: 15px;
+         text-align: left;
      }
 
-     #time-post {
-         padding-left: 15px;
-     }
-     .col {
-         padding-top: 10px;
-     }
-     .title-form {
-         padding-left: 15px;
-     }
-     #send-form {
-         margin-top: 0;
-         padding-top: 0;
+     .navbar-brand {
+         font-size: 35px;
+         padding: 10px;
      }
 
+     .col .social-links {
+         margin: 0;
+         padding: 0;
+     }
  }
+@media only screen and (max-width: 480px) {
+    #title-add {
+        padding-left: 0;
+        padding-bottom: 5px;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    #date-post {
+        padding-left: 1px;
+    }
+
+    #time-post {
+        padding-left: 1px;
+    }
+    .col {
+        padding-top: 1px;
+    }
+    .col-lg-12 {
+        margin-top: 105px;
+    }
+    .title-form {
+        padding-left: 15px;
+        text-align: center;
+    }
+    .row h2 {
+        margin-top: 5px;
+        font-size: 180%;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    label {
+        font-size: 150%;
+    }
+
+    label,
+    .col-md-auto {
+        font-size: 100%;
+    }
+
+    .send-button {
+        width: 100%;
+        font-size: large;
+    }
+
+    input[type=checkbox] {
+        transform: scale(1.2);
+    }
+    nav,
+    .navbar-brand{
+        height: 80px;
+        font-size: 15px;
+        text-align: left;
+    }
+
+    .navbar-brand {
+        font-size: 35px;
+        padding: 10px;
+    }
+
+    #navbarNavAltMarkup {
+        background-color: #343a40;
+    }
+
+    #result {
+        font-size: 140%;
+        padding-bottom: 10px;
+    }
+
+}
  /* Za duzy naglowek na 325px i w dół -
  Zając sie tym później,
  albo jesli zostanie zwrocona uwaga */
  @media only screen and (max-width: 325px) {
-     div.text-dark{
-     }
+
  }
