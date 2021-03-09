@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
     <title>Add a Title here</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -62,11 +64,10 @@
                 <script>
                     var counter = 0;
                 </script>
-            <div class="text-center bg-light text-dark">
+            <div class="text-center text-dark">
                 <h3>Nowe Posty</h3>
             </div>
             <hr>
-            <br>
             <div class="text-center">
                 <div class="spinner-border" id="spinner" style="width: 3rem; height: 3rem;" role="status">
                     <span class="visually-hidden"></span>
@@ -114,10 +115,10 @@
                         {
                             counter = counter + 1;
 
-                            blogsHtml += "<div class='jumbotron bg-light text-dark border border-dark'>";
-                            blogsHtml += "<div class=\"text-center bg-light text-dark\" id='title-post'><h3>" + singleBlog.val().title + "</h3></div> <br><br>";
+                            blogsHtml += "<div class='jumbotron bg-light text-dark border border-dark post-jumbotron'>";
+                            blogsHtml += "<div class=\"text-center bg-light text-dark\" id='title-post'><h3>" + singleBlog.val().title + "</h3></div> <br>";
 
-                            blogsHtml += "<div> <img width='1000px' height='550px' src='" + singleBlog.val().image + "'/></div> <br>";
+                            blogsHtml += "<div class='img-post'> <img  width='1000px' height='525px' src='" + singleBlog.val().image + "'/></div> <br>";
 
                                 blogsHtml += "<div class='row'>";
                                     blogsHtml +="<div class='col-sm'> <p style='color:grey; text-align: '>" +
@@ -134,14 +135,14 @@
                                                 ;
                                 blogsHtml += "</div> <br>";
 
-                                blogsHtml += "<div style='text-align: justify; color: black;'>";
+                                blogsHtml += "<div class='description-post' >";
                                     blogsHtml += singleBlog.val().desc;
                                 blogsHtml += "</div> <br>";
 
                                 blogsHtml += "<div class='form-group' style='text-align: justify; color: black;'>";
                                     blogsHtml += "<button class='form-control btn btn-light bg-dark text-white' onclick=deleteBlogRecord('" + singleBlog.key + "')>" +
                                         "Usuń Post</button>";
-                                blogsHtml += "</div> <br>";
+                                blogsHtml += "</div>";
 
                             blogsHtml += "</div>";
                         });
