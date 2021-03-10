@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add a Title here</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>GN - Kontakt</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -28,136 +29,129 @@
         }
     </style>
 </head>
-<body class="h-100">
+<body >
 <nav class="navbar fixed-top navbar-expand-lg bg-dark text-white navbar-dark" >
     <div class="container-fluid" >
-        <a class="navbar-brand"  href="#">
-            <span style="color: white"> Blog App </span>
+        <a class="navbar-brand"  href="MainPage.html">
+            <span style="color: white"> GameNews </span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="active nav-item">
-                <a class="nav-link" href="#">
-                  Home
-                </a>
-            </li>
-            <li>
-                <a class="nav-link" href="#">
-                     My Blogs
-                </a>
-            </li>
-        </ul>
+                <li >
+                    <a class="nav-link" href="MainBlogs.html">
+                        News Lista
+                    </a>
+                </li>
+            </ul>
             <div class="navbar-nav  my-2 my-lg-0" >
-                <a class="nav-link" style="padding-top: 0" href="#">Contact</a>
-
-                <a class="nav-link"  style="padding-top: 0" href="#" id="logout-menu">Logout</a>
+                <a class="nav-link active" style="padding-top: 0" href="UserContactPage.html">Kontakt</a>
             </div>
         </div>
     </div>
-
 </nav>
 
-    <div class="col-lg-12" style="margin-top: 155px; margin-bottom: 95px">
-        <div class="container" id="container">
-            <!-- Contact Form -->
-            <div class="jumbotron bg-dark" style="margin-top: 32px;">
-                <script>
-                    var counter = 0;
-                </script>
-                <div class="container text-center">
-                    <form id="main-form">
+<div class="col-lg-12">
+    <div class="container" id="container">
+        <!-- Contact Form -->
+        <div class="jumbotron bg-dark" >
+            <script>
+                var counter = 0;
+            </script>
+            <div class="container-fluid text-center">
+                <form id="main-form">
 
-                                <div class="row"><div class="title-form">
-                                    <h2> Napisz do nas! </h2>
-                                </div></div>
-                <div class="contact-form">
-                                        <div class="row">
-                                            <div class="col span-1-of-3">
-                                                <label for="email2">Nazwa </label>
-                                            </div>
-                                            <div class="col-md-auto span-2-of-3" >
-                                                <input type="text" name="email2" id="email2" placeholder="Nick lub Imię i Nazwisko" required>
-                                            </div>
-                                        </div>
-                            <div class="row">
-                                <div class="col span-1-of-3">
-                                    <label for="find-us">Typ zgłoszenia</label>
-                                </div>
-                                <div class="col-md-auto span-2-of-3">
-                                    <select name="find-us" id="find-us">
-                                        <option value="comment"> Komentarz</option>
-                                        <option value="tech-error"> Zgłoszenie błędu w poście</option>
-                                        <option value="comment"> Zgłoszenie błędu technicznego</option>
-                                        <option value="comment"> Inne</option>
-                                    </select>
-                                </div>
+                    <div class="row"><div class="title-form">
+                        <h2> Napisz do nas! </h2>
+                    </div></div>
+                    <div class="contact-form">
+                        <div class="row">
+                            <div class="col span-1-of-3">
+                                <label for="email2">Nazwa </label>
                             </div>
-                                        <div class="row">
-                                            <div class="col span-1-of-3">
-                                                <label for="like">Podoba Ci się strona?</label>
-                                            </div>
-                                            <div class="col-md-auto span-2-of-3">
-                                                <input type="checkbox" name="like" id="like" checked> Oczywiście!
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col span-1-of-3">
-                                                <label for="contact-message">Treść</label>
-                                            </div>
-                                            <div class="col-md-auto span-2-of-3">
-                                                <textarea name="message" id="contact-message" placeholder="Twoja wiadomość"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col span-1-of-3">
-
-                                            </div>
-
-                                            <div class="col-md-auto span-2-of-3">
-                                                <button type="submit" style="" class="btn btn-light bg-light text-dark" id="send-form">Wyślij!</button>
-<!--                                                <input type="submit" value="Wyślij!">-->
-                                            </div>
-                                        </div> <br>
-                </div>
-                    </form>
-                    <div id="result">
-                    </div>
+                            <div class="col-md-auto span-2-of-3" >
+                                <input type="text" name="email2" id="email2" placeholder="Nick lub Imię i Nazwisko" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col span-1-of-3">
+                                <label for="find-us">Typ zgłoszenia</label>
+                            </div>
+                            <div class="col-md-auto span-2-of-3">
+                                <select name="find-us" id="find-us">
+                                    <option value="comment"> Komentarz</option>
+                                    <option value="tech-error"> Zgłoszenie błędu w poście</option>
+                                    <option value="comment"> Zgłoszenie błędu technicznego</option>
+                                    <option value="comment"> Inne</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col span-1-of-3">
+                                <label for="like">Podoba Ci się strona?</label>
+                            </div>
+                            <div class="col-md-auto span-2-of-3">
+                                <input type="checkbox" name="like" id="like" checked> Oczywiście!
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col span-1-of-3">
+                                <label for="contact-message">Treść</label>
+                            </div>
+                            <div class="col-md-auto span-2-of-3">
+                                <textarea name="message" id="contact-message" placeholder="Twoja wiadomość"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col span-1-of-3">
+                            </div>
+                            <div class="col-md-auto span-2-of-3">
+                                <div class="send-button">
+                                    <button type="submit"  class="btn btn-light bg-light text-dark" id="send-form">Wyślij!</button>
+                                    <!--                                                <input type="submit" value="Wyślij!">-->
+                                </div>
+                            </div> <br>
+                        </div></div>
+                </form>
+                <div id="result">
                 </div>
             </div>
         </div>
     </div>
-    <footer class="">
-        <div class="row">
-            <div class="col span-1-of-2">
-                <ul class="footer-nav">
-                    <li><a href="#">Work</a> </li>
-                    <li><a href="#">About</a> </li>
-                    <li><a href="#">Contact</a> </li>
-                    <li><a href="#">Resumé</a> </li>
-                </ul>
-            </div>
-            <div class="col span-1-of-2">
-                <ul class="social-links">
-                    <li><a href="https://www.facebook.com/" class="fb2"> <img src="icons/logo-facebook.svg" alt="facebook" class="fb"></a></li>
-                    <li><a href="https://twitter.com/"><img src="icons/logo-twitter.svg" alt="twitter"> </a></li>
-                    <li><a href="https://pl.linkedin.com/"><img src="icons/logo-linkedin.svg" alt="linkdin"> </a></li>
-                    <li><a href="https://github.com/Matix02"><img src="icons/logo-github.svg" alt="github"> </a></li>
-                </ul>
-            </div>
-        </div>
-        <p style="text-align: center">
-            Copyright &copy; 2021 by Mateusz Gęślowski. All rights reserved.
-        </p>
-    </footer>
+</div>
 
+
+<!--<footer >-->
+<!--    <div class="row">-->
+<!--        <div class="col span-1-of-2">-->
+<!--            <ul class="footer-nav">-->
+<!--                <li><a href="#">Work</a> </li>-->
+<!--                <li><a href="#">About</a> </li>-->
+<!--                <li><a href="#">Contact</a> </li>-->
+<!--                <li><a href="#">Resumé</a> </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="col span-1-of-2">-->
+<!--            <ul class="social-links">-->
+<!--                <li><a href="https://www.facebook.com/" class="fb2"> <img src="icons/logo-facebook.svg" alt="facebook" class="fb"></a></li>-->
+<!--                <li><a href="https://twitter.com/"><img src="icons/logo-twitter.svg" alt="twitter"> </a></li>-->
+<!--                <li><a href="https://pl.linkedin.com/"><img src="icons/logo-linkedin.svg" alt="linkdin"> </a></li>-->
+<!--                <li><a href="https://github.com/Matix02"><img src="icons/logo-github.svg" alt="github"> </a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <p style="text-align: center">-->
+<!--        Copyright &copy; 2021 by Mateusz Gęślowski. All rights reserved.-->
+<!--    </p>-->
+<!--</footer>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
 <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js" integrity="sha512-0mXreXYrXoy9laHoypsAOjuSCqh57vY+kIdE46k8Hw0yRY1EhJyHWUEAqfHOTrPkBpsbO39/ZPw5HITv8mLVOA==" crossorigin="anonymous"></script>
 <script src="js/responsive.js"></script>
+
 <script src="js/index.js"></script>
 
 </body>

@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add a Title here</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>Rejestracja</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
@@ -13,6 +15,8 @@
 
     <!-- STYLE CSS -->
     <link rel="stylesheet" href="design_files/css/style.css">
+    <link rel="stylesheet" href="design_files/css/log-responsive3.css">
+
 
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
@@ -24,31 +28,31 @@
 <div class="wrapper">
 <div class="inner">
     <div class="image-holder">
-    <img src="design_files/images/registration-form-1.jpg">
+    <img src="design_files/images/292fbb9302320515bdc8483588e50b12.png">
     </div>
     <form action="">
-        <h3>Register</h3>
+        <h3>Rejestracja</h3>
         <div class="form-wrapper">
-            <input id="email" type="email" placeholder="Email Address" class="form-control">
+            <input id="email" type="email" placeholder="Adres Email" class="form-control">
             <i class="zmdi zmdi zmdi-email"></i>
         </div>
         <div class="form-wrapper">
-            <input id="password" type="password" placeholder="Password" class="form-control">
+            <input id="password" type="password" placeholder="Hasło" class="form-control">
             <i class="zmid zmdi zmdi-lock"></i>
         </div>
         <div class="form-wrapper">
-            <input id="confirmPassword" type="password" placeholder="Confirm Password" class="form-control">
+            <input id="confirmPassword" type="password" placeholder="Potwierdź Hasło" class="form-control">
             <i class="zmid zmdi zmdi-lock"></i>
         </div>
         <div class="form-group container-login100-form-btn">
             <button id="btn-signup" type="button">
-                Register
+                Zarejestruj się
                 <i class="zmdi zmdi-arrow-right"></i>
             </button>
         </div>
-        <div class="w-full text-center" style="margin-top: 49%; font-size: 15px;">
-            <a href="singin.html" class="text-dark">
-                Already have account?
+        <div class="w-full text-center final-button" >
+            <a href="singin.html" class="text-dark" >
+                Posiadasz już konto?
             </a>
         </div>
     </form>

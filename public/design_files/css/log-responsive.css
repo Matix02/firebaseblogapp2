@@ -1,0 +1,72 @@
+.no-account-button {
+    font-size: 15px;
+    padding-top: 20px;
+}
+
+@media only screen and (max-width: 1199px) {
+    .wrapper {
+        background-position: right center;
+    }
+    .inner {
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        max-width: unset;
+    }
+
+    .inner form {
+
+    }
+
+    .form-control {
+        height: 55px;
+        font-size: 150%;
+
+    }
+
+     .inner form h3 {
+         font-size: 250%;
+     }
+     form,
+     .no-account-button {
+         font-size: 180%;
+     }
+    .no-account-button {
+        font-size: 100%;
+    }
+
+    #password,
+    #email {
+        font-size: 200%;
+    }
+    #btn-login {
+        width: 90%;
+        height: 100px;
+        font-size: 180%;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .inner form {
+        padding-top: 10px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .inner {
+        display: block;
+    }
+
+    .image-holder {
+        width: 100%;
+    }
+
+    form {
+        width: 100%;
+        padding: 40px 0 30px;
+    }
+
+    button {
+        margin-top: 60px;
+    }
+}

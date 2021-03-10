@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add a Title here</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>Ustawienia konta</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -14,6 +16,7 @@
 
     <!-- STYLE CSS -->
     <link rel="stylesheet" href="design_files/css/style.css">
+    <link rel="stylesheet" href="design_files/css/log-responsive.css">
 
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
@@ -25,57 +28,57 @@
 <div class="wrapper">
     <div class="inner">
         <div class="image-holder">
-            <img src="design_files/images/registration-form-1.jpg">
+            <img src="design_files/images/crop.jpg">
         </div>
         <form action="">
-            <h3>Account Settings</h3>
+            <h3>Ustawienia Konta</h3>
             <div class="form-group">
-                <input id="firstName" type="text" placeholder="First Name" class="form-control">
-                <input id="secondName" type="text" placeholder="Second Name" class="form-control">
+                <input id="firstName" type="text" placeholder="Imię" class="form-control">
+                <input id="secondName" type="text" placeholder="Nazwisko" class="form-control">
 
             </div>
             <div class="form-wrapper">
                 <select name="country" id="country" class="form-control">
-                    <option value="" disabled selected>Country</option>
-                    <option value="Poland">Poland</option>
+                    <option value="" disabled selected>Kraj</option>
+                    <option value="Poland">Polska</option>
                     <option value="USA">USA</option>
-                    <option value="England">England</option>
-                    <option value="India">India</option>
-                    <option value="Russia">Russia</option>
-                    <option value="France">France</option>
+                    <option value="England">Anglia</option>
+                    <option value="India">Indie</option>
+                    <option value="Russia">Rosja</option>
+                    <option value="France">Francja</option>
                 </select>
                 <i class="zmdi zmdi-caret-down" style="font-size: 17px;"></i>
             </div>
             <!-- Error Phone -->
             <div class="form-wrapper">
-                <input id="phone" type="number" placeholder="Phone" class="form-control">
+                <input id="phone" type="number" placeholder="Telefon" class="form-control">
                 <i class="zmdi zmdi-tablet-mac"></i>
             </div>
             <!-- END Error Phone -->
 
             <div class="form-wrapper">
-                <select name="" id="gender" class="form-control">
+                <select name="" id="Płeć" class="form-control">
                     <option value="" disabled selected>Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Others">Others</option>
+                    <option value="Male">Mężczyzna</option>
+                    <option value="Female">Kobieta</option>
+                    <option value="Others">Inne</option>
                 </select>
                 <i class="zmdi zmdi-caret-down" style="font-size: 17px;"></i>
             </div>
             <!-- Error Address -->
 
             <div class="form-wrapper">
-                <input id="address" type="text" placeholder="Address" class="form-control">
+                <input id="address" type="text" placeholder="Adres" class="form-control">
                 <i class="zmdi zmdi-pin"></i>
             </div>
             <div class="form-wrapper">
-                <input id="bio" type="text" placeholder="Bio" class="form-control">
+                <input id="bio" type="text" placeholder="Opis" class="form-control">
                 <i class="zmdi zmdi-account-box-mail"></i>
             </div>
 
             <div class="form-group container-login100-form-btn">
                 <button id="btn-update" type="button">
-                    Update & Set
+                    Zaktualizuj i Ustaw
                     <i class="zmdi zmdi-arrow-right"></i>
                 </button>
             </div>

@@ -1,0 +1,33 @@
+.final-button {
+    margin-top: 49%;
+    font-size: 15px;
+}
+.final-button
+{
+    margin-top: 15%;
+}
+@media only screen and (max-width: 780px) {
+
+    .final-button,
+    .forget-link,
+    .no-account-button,
+    .final-button
+    {
+        margin-top: 15%;
+    }
+
+    .forget-link
+    {
+        margin-top: 5%;
+    }
+
+    .no-account-button
+    {
+        margin-top: 5%;
+    }
+}
+@media only screen and (max-width: 480px) {
+
+    .final-button {
+    }
+}
