@@ -257,64 +257,64 @@
                 });
                 });
                 //////////////////!!!!!!!!!!!!!!!!! RETRIVE DATA !!!!!!!!!!!!!//////////////////
-                var dbBlogs = firebase.database().ref().child("Blogs").orderByChild("counter");
-
-                dbBlogs.on("value", function(blogs)
-                {
-                    if(blogs.exists())
-                    {
-                        var blogsHtml = "";
-
-                        blogs.forEach(function(singleBlog)
-                        {
-                            counter = counter + 1;
-
-                            blogsHtml += "<div class='jumbotron bg-light text-dark border border-dark'>";
-                            blogsHtml += "<div class=\"text-center bg-light text-dark\" id='title-post'><h3>" + singleBlog.val().title + "</h3></div> <br><br>";
-
-                            blogsHtml += "<div> <img width='1000px' height='550px' src='" + singleBlog.val().image + "'/></div> <br>";
-
-                                blogsHtml += "<div class='row'>";
-                                    blogsHtml +="<div class='col-sm'> <p style='color:grey; text-align: '>" +
-                                                "Autor: " + singleBlog.val().userName +
-                                                "</p> </div>" +
-
-                                                "<div class='col-sm-4' id='time-post'> <p style='color:grey; text-align: '>" +
-                                                "Czas: " + singleBlog.val().time +
-                                                "</p> </div>" +
-
-                                                "<div class='col-sm-3' id='date-post'> <p style='color:grey; text-align: '>" +
-                                                "Data: " + singleBlog.val().date +
-                                                "</p> </div>"
-                                                ;
-                                blogsHtml += "</div> <br>";
-
-                                blogsHtml += "<div style='text-align: justify; color: black;'>";
-                                    blogsHtml += singleBlog.val().desc;
-                                blogsHtml += "</div> <br>";
-
-                                blogsHtml += "<div class='form-group' style='text-align: justify; color: black;'>";
-                                    blogsHtml += "<button class='form-control btn btn-light bg-dark text-white' onclick=deleteBlogRecord('" + singleBlog.key + "')>" +
-                                        "Usuń Post</button>";
-                                blogsHtml += "</div> <br>";
-
-                            blogsHtml += "</div>";
-                        });
-                        $("#blogs").html(blogsHtml);
-                    }
-                });
-
-                function deleteBlogRecord(key) {
-                    var deleteRef = firebase.database().ref().child("Blogs").child(key);
-
-                    return deleteRef.remove()
-                    .then(function() {
-                        console.log("Removed Successfully");
-                    })
-                    .catch(function(){
-                        console.log("Error Occured");
-                    });
-                }
+                // var dbBlogs = firebase.database().ref().child("Blogs").orderByChild("counter");
+                //
+                // dbBlogs.on("value", function(blogs)
+                // {
+                //     if(blogs.exists())
+                //     {
+                //         var blogsHtml = "";
+                //
+                //         blogs.forEach(function(singleBlog)
+                //         {
+                //             counter = counter + 1;
+                //
+                //             blogsHtml += "<div class='jumbotron bg-light text-dark border border-dark'>";
+                //             blogsHtml += "<div class=\"text-center bg-light text-dark\" id='title-post'><h3>" + singleBlog.val().title + "</h3></div> <br><br>";
+                //
+                //             blogsHtml += "<div> <img width='1000px' height='550px' src='" + singleBlog.val().image + "'/></div> <br>";
+                //
+                //                 blogsHtml += "<div class='row'>";
+                //                     blogsHtml +="<div class='col-sm'> <p style='color:grey; text-align: '>" +
+                //                                 "Autor: " + singleBlog.val().userName +
+                //                                 "</p> </div>" +
+                //
+                //                                 "<div class='col-sm-4' id='time-post'> <p style='color:grey; text-align: '>" +
+                //                                 "Czas: " + singleBlog.val().time +
+                //                                 "</p> </div>" +
+                //
+                //                                 "<div class='col-sm-3' id='date-post'> <p style='color:grey; text-align: '>" +
+                //                                 "Data: " + singleBlog.val().date +
+                //                                 "</p> </div>"
+                //                                 ;
+                //                 blogsHtml += "</div> <br>";
+                //
+                //                 blogsHtml += "<div style='text-align: justify; color: black;'>";
+                //                     blogsHtml += singleBlog.val().desc;
+                //                 blogsHtml += "</div> <br>";
+                //
+                //                 blogsHtml += "<div class='form-group' style='text-align: justify; color: black;'>";
+                //                     blogsHtml += "<button class='form-control btn btn-light bg-dark text-white' onclick=deleteBlogRecord('" + singleBlog.key + "')>" +
+                //                         "Usuń Post</button>";
+                //                 blogsHtml += "</div> <br>";
+                //
+                //             blogsHtml += "</div>";
+                //         });
+                //         $("#blogs").html(blogsHtml);
+                //     }
+                // });
+                //
+                // function deleteBlogRecord(key) {
+                //     var deleteRef = firebase.database().ref().child("Blogs").child(key);
+                //
+                //     return deleteRef.remove()
+                //     .then(function() {
+                //         console.log("Removed Successfully");
+                //     })
+                //     .catch(function(){
+                //         console.log("Error Occured");
+                //     });
+                // }
             </script>
         </div>
     </div>

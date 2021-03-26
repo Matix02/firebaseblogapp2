@@ -151,6 +151,11 @@
                     }
                 });
 
+                $("#logout-menu").click(function ()
+                {
+                    firebase.auth().signOut();
+                });
+
                 function deleteBlogRecord(key) {
                     var deleteRef = firebase.database().ref().child("Blogs").child(key);
 
@@ -165,7 +170,6 @@
             </script>
         </div>
     </div>
-</div>
 <!--<footer>-->
 <!--    <div class="row">-->
 <!--        <div class="col span-1-of-2">-->
@@ -194,6 +198,7 @@
 <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js" integrity="sha512-0mXreXYrXoy9laHoypsAOjuSCqh57vY+kIdE46k8Hw0yRY1EhJyHWUEAqfHOTrPkBpsbO39/ZPw5HITv8mLVOA==" crossorigin="anonymous"></script>
 <script src="js/responsive.js"></script>
+<script src="js/index.js"></script>
 
 <script>
     firebase.auth().onAuthStateChanged(function(user)
