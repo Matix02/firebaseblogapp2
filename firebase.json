@@ -15,6 +15,9 @@
     "site" : "tsblogapp",
     "public": "public",
     "cleanUrls": true,
+    "headers": [
+      {"source": "./public/js/app.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}]}
+    ],
     "ignore": [
       "firebase.json",
       "**/.*",
