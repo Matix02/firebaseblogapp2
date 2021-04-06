@@ -116,7 +116,7 @@ $("#btn-update").click(function()
     var country = $("#country").val();
     var gender = $("#gender").val();
 
-    var rootRef = firebase.database().ref().child("Users");
+    var rootRef = firebase.database().ref().child("Users/");
     var userID = firebase.auth().currentUser.uid;
     var usersRef = rootRef.child(userID);
 
