@@ -1,8 +1,10 @@
-const cacheName = 'site-static-v4';
+const cacheName = 'site-static-v5';
 const staticAssets = [
     'index.html',
     './design_files/css/responsive.css',
     './js/grid.css',
+    './design_files/css/bootstrap.min.css',
+    './js/bootstrap.min.js'
     // Dodać reszte plik, jak zacznie dzialac
 ];
 
