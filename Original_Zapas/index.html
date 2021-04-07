@@ -2,8 +2,7 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=no">
-  <meta name="theme-color" content="#2A3443">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
   <title>GN - News</title>
 
@@ -12,10 +11,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
 
   <link rel="stylesheet" href="design_files/css/responsive.css">
-  <link rel="apple-touch-icon" href="icons/Daco_192x192.png">
+  <link rel="stylesheet" type="text/css" href="js/grid.css">
+
   <style>
     progress[value] {
       /* Reset the default appearance */
@@ -57,8 +59,12 @@
 <div class="col-lg-12" style="margin-top: 95px;">
   <div class="container" id="container">
     <script>
-      let counter = 0;
+      var counter = 0;
     </script>
+    <div class="text-center text-dark">
+      <h3>Game News</h3>
+    </div>
+    <hr>
     <div class="text-center">
       <div class="spinner-border" id="spinner" style="width: 3rem; height: 3rem;" role="status">
         <span class="visually-hidden"></span>
@@ -73,7 +79,8 @@
     <!-- After Blog Post Area Ends Here -->
     <!-- Validation and uploading of Blogs -->
     <script>
-      const firebaseConfig = {
+
+      var firebaseConfig = {
         apiKey: "AIzaSyBs8aQxdIjqyS_5jY618bedRhC543pbrLQ",
         authDomain: "bloggapp-c69c5.firebaseapp.com",
         databaseURL: "https://bloggapp-c69c5-default-rtdb.europe-west1.firebasedatabase.app",
@@ -86,18 +93,20 @@
 
       firebase.initializeApp(firebaseConfig);
 
-      const spinner = document.getElementById('spinner');
+      firebase.auth.Auth.Persistence.LOCAL;
+
+      var spinner = document.getElementById('spinner');
 
       $("#selected-image").hide();
 
       //////////////////!!!!!!!!!!!!!!!!! RETRIVE DATA !!!!!!!!!!!!!//////////////////
-      const dbBlogs = firebase.database().ref().child("Blogs").orderByChild("counter");
+      var dbBlogs = firebase.database().ref().child("Blogs").orderByChild("counter");
 
       dbBlogs.on("value", function(blogs)
       {
         if(blogs.exists())
         {
-          let blogsHtml = "";
+          var blogsHtml = "";
 
           blogs.forEach(function(singleBlog)
           {
@@ -106,18 +115,18 @@
             blogsHtml += "<div class='jumbotron bg-light text-dark border border-dark post-jumbotron'>";
             blogsHtml += "<div class=\"text-center bg-light text-dark\" id='title-post'><h3>" + singleBlog.val().title + "</h3></div> <br>";
 
-            blogsHtml += "<div class='img-post'> <img width='1000px' height='525px' src='" + singleBlog.val().image + "' alt='Graficzne Tło Newsa'/></div> <br>";
+            blogsHtml += "<div class='img-post'> <img width='1000px' height='525px' src='" + singleBlog.val().image + "'/></div> <br>";
 
             blogsHtml += "<div class='row'>";
-            blogsHtml +="<div class='col-sm'> <p style='color:black; text-align: '>" +
+            blogsHtml +="<div class='col-sm'> <p style='color:grey; text-align: '>" +
                     "Autor: " + singleBlog.val().userName +
                     "</p> </div>" +
 
-                    "<div class='col-sm-4' id='time-post'> <p style='color:black; text-align: '>" +
+                    "<div class='col-sm-4' id='time-post'> <p style='color:grey; text-align: '>" +
                     "Czas: " + singleBlog.val().time +
                     "</p> </div>" +
 
-                    "<div class='col-sm-3' id='date-post'> <p style='color:black; text-align: '>" +
+                    "<div class='col-sm-3' id='date-post'> <p style='color:grey; text-align: '>" +
                     "Data: " + singleBlog.val().date +
                     "</p> </div>"
             ;

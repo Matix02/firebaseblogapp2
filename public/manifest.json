@@ -1,17 +1,17 @@
 {
-  "name": "PWAConf2",
-  "short_name": "PWAConf2",
+  "name": "GamesBlog",
+  "short_name": "GamesBlog",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#2A3443",
-  "description": "A demo app for a fictional conference",
+  "background_color": "#fff",
+  "description": "Blog about News from Gaming World",
   "theme_color": "#2A3443",
-
   "icons": [
     {
-      "src": "https://i.ibb.co/PZYR17D/Hacker-icon.png",
+      "src": "https://i.ibb.co/yp1bjD6/Daco-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

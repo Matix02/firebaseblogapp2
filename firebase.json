@@ -14,7 +14,7 @@
   "hosting": {
     "site" : "tsblogapp",
     "public": "public",
-    "cleanUrls": true,
+    "cleanUrls": false,
     "headers": [
       {"source": "./public/js/app.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}]}
     ],

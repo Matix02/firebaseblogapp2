@@ -1,6 +1,8 @@
-const cacheName = 'site-static-v2';
+const cacheName = 'site-static-v4';
 const staticAssets = [
     'index.html',
+    './design_files/css/responsive.css',
+    './js/grid.css',
     // Dodać reszte plik, jak zacznie dzialac
 ];
 
