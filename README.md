@@ -5,6 +5,8 @@ Additionally, this application includes two forms. First, editors can publish wi
 
 The second version is intended for users to read the posts. This version really has the function of a progressive web app as the user can install the app like a native app. Both versions received a contact form to email the admin about errors in the layout and even in the articles.
 
+Link: https://tsblogapp.web.app/
+
 Technology:
 - HTML5/CSS
 - JavaScript
